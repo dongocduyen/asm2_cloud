@@ -1,0 +1,46 @@
+<html>
+<head>
+    <title>Home page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Product Manager of ATN Company.</h2>
+        <a href="/add-product" class="btn btn-success float-right">Add Product</a>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Product id</th>
+                    <th>Product name</th>
+                    <th>Product type</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <% products.forEach((entry) => { %>
+            <tr ondblclick="handleUpdateProduct('<%= entry.id %>')">
+                <td><%= entry.id %></td>
+                <td><%= entry.name %></td>
+                <td><%= entry.type %></td>
+                <td>
+                    
+                    <form action=""><input class="btn btn-primary" type="button" value="Update"
+                        onclick="handleUpdateProduct('<%= entry.id %>')"></form>
+                    
+                </td>
+            </tr>
+            <% }) %>
+        </table>
+        <script>
+            function handleUpdateProduct(value) {
+                $(location).attr('href', '/update-product/' + value);
+            }
+        </script>
+    </div>
+</body>
+
+</html>
